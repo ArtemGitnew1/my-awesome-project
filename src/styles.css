@@ -1,0 +1,83 @@
+/* БАЗОВЫЕ СТИЛИ */
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+/* СТИЛИ МОДАЛЬНОГО ОКНА */
+dialog {
+    padding: 1.25rem;
+    border: none;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* СТИЛИ ФОРМЫ */
+label {
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+    font-weight: 500;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+button, [type="submit"] {
+    background: #0a84ff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+}
+
+/* СОСТОЯНИЯ ЭЛЕМЕНТОВ */
+:where(input, select, textarea, button):focus-visible {
+    outline: 2px solid #0a84ff;
+    outline-offset: 2px;
+}
+
+button:hover {
+    background: #0070e0;
+}
+
+:disabled, [aria-disabled="true"] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ПОДСВЕТКА ОШИБОК */
+[aria-invalid="true"] {
+    border-color: #b00020;
+    background-color: #fff5f5;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+small {
+    display: block;
+    color: #666;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}

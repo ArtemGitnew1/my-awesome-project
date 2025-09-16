@@ -3,57 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - Веб-Студия "Астра"</title>
-    <meta name="description" content="Веб-разработка и дизайн на заказ. Создание современных и быстрых сайтов для вашего бизнеса.">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Главная - Моя веб-студия</title>
+    <meta name="description" content="Профессиональная разработка сайтов. Создание современных и быстрых веб-приложений.">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <a href="/">Веб-Студия "Астра"</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="contacts.html">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <a href="index.html">Моя веб-студия</a>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="about.html">О нас</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Добро пожаловать на наш сайт!</h1>
+    <section id="services">
+        <h2>Наши услуги</h2>
+        <p>Мы предлагаем полный цикл веб-разработки.</p>
+        <a href="#contacts">Связаться с нами</a>
+    </section>
+    <section id="portfolio">
+        <h2>Портфолио</h2>
+        <p>Наши лучшие работы.</p>
+    </section>
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Напишите или позвоните нам.</p>
+        <!-- Кнопка открытия модалки -->
+        <button id="openDialog" type="button">Написать нам</button>
+        <a href="contacts.html">Подробнее</a>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2023 Моя веб-студия. Все права защищены.</p>
+</footer>
 
-    <main>
-        <h1>Добро пожаловать на наш сайт!</h1>
+<!-- Модальное окно -->
+<dialog id="contactDialog" aria-labelledby="dialogTitle">
+    <h2 id="dialogTitle">Обратная связь</h2>
 
-        <section id="services">
-            <h2>Наши услуги</h2>
-            <p>Мы предлагаем полный цикл разработки: от дизайна до запуска.</p>
-            <ul>
-                <li>Верстка по макетам</li>
-                <li>Разработка на React</li>
-                <li>Интеграция с CMS</li>
-            </ul>
-            <a href="#contacts">Связаться с нами</a>
-        </section>
+    <form id="contactForm" method="dialog" novalidate>
+        <label for="name">Имя *</label>
+        <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name">
 
-        <section id="portfolio">
-            <h2>Портфолио</h2>
-            <p>Посмотрите примеры наших последних работ:</p>
-            <ul>
-                <li>Корпоративный сайт для ООО "Вектор"</li>
-                <li>Интернет-магазин одежды</li>
-                <li>Лендинг для мобильного приложения</li>
-            </ul>
-        </section>
+        <label for="email">E-mail *</label>
+        <input id="email" name="email" type="email" required autocomplete="email">
 
-        <section id="contacts">
-            <h2>Контактная информация</h2>
-            <p>Email: info@astra-studio.ru</p>
-            <p>Телефон: +7 (1221) 123-45-67</p>
-            <a href="contacts.html">Подробнее</a>
-        </section>
-    </main>
+        <label for="phone">Телефон *</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
+               aria-describedby="phoneHelp" placeholder="+7 (900) 000-00-00"
+               required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
+        <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
 
-    <footer>
-        <p>&copy; 2023 Веб-Студия "Астра". Все права защищены.</p>
-        <p>Телефон: +7 (495) 123-45-67</p>
-    </footer>
+        <label for="date">Дата обращения</label>
+        <input id="date" name="date" type="date">
+
+        <label for="topic">Тема *</label>
+        <select id="topic" name="topic" required>
+            <option value="">Выберите тему</option>
+            <option value="question">Вопрос</option>
+            <option value="order">Заказ</option>
+            <option value="other">Другое</option>
+        </select>
+
+        <label for="message">Сообщение *</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <div class="form-actions">
+            <button type="button" id="closeDialog">Закрыть</button>
+            <button type="submit">Отправить</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="main.js" defer></script>
 </body>
 </html>
