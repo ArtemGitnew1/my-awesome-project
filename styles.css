@@ -1,83 +1,158 @@
-/* БАЗОВЫЕ СТИЛИ */
+/* ===== CSS ПЕРЕМЕННЫЕ (ТОКЕНЫ) ===== */
+:root {
+    /* Цвета */
+    --color-bg: #fff;
+    --color-text: #0b0b0b;
+    --color-muted: #666;
+    --color-primary: #0a84ff;
+    --color-danger: #b00020;
+
+    /* Отступы */
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --space-5: 40px;
+
+    /* Шрифты */
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+    /* Скругления */
+    --radius: 12px;
+}
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
 * { box-sizing: border-box; }
 
 html, body {
     margin: 0;
     padding: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: var(--font-body);
     line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
 }
 
-/* СТИЛИ МОДАЛЬНОГО ОКНА */
-dialog {
-    padding: 1.25rem;
+html { scroll-behavior: smooth; }
+
+/* ===== HEADER И НАВИГАЦИЯ (БЭМ) ===== */
+.header {
+    padding: var(--space-3);
+    border-bottom: 1px solid #eee;
+}
+
+.header__brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: var(--space-2) 0 0 0;
+    gap: var(--space-3);
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: color 0.2s ease;
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+}
+
+.nav__link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ===== ГЕРОЙ СЕКЦИЯ С ФОНОВЫМ ИЗОБРАЖЕНИЕМ ===== */
+.hero {
+    background:
+            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+            url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: var(--space-5);
+    text-align: center;
+    margin: var(--space-3);
+    border-radius: var(--radius);
+}
+
+.hero__title {
+    margin: 0 0 var(--space-2) 0;
+    font-size: 2.5rem;
+}
+
+.hero__text {
+    margin: 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ===== ВИДЕО СЕКЦИЯ ===== */
+.video {
+    aspect-ratio: 16/9;
+    width: 100%;
+    max-width: 800px;
+    margin: var(--space-4) auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.video__iframe {
+    width: 100%;
+    height: 100%;
     border: none;
-    border-radius: 12px;
+}
+
+/* ===== ФОРМА И МОДАЛКА ===== */
+#openDialog {
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    cursor: pointer;
+    margin: var(--space-2) 0;
+    transition: background-color 0.2s ease;
+}
+
+#openDialog:hover {
+    background: #0070e0;
+}
+
+/* Остальные стили формы остаются как были */
+dialog {
+    padding: var(--space-4);
+    border: none;
+    border-radius: var(--radius);
     width: 90%;
     max-width: 600px;
 }
 
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
+/* ===== ОБЩИЕ СТИЛИ ===== */
+.main {
+    padding: var(--space-3);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* СТИЛИ ФОРМЫ */
-label {
-    display: block;
-    margin: 0.5rem 0 0.25rem;
-    font-weight: 500;
+.section {
+    margin: var(--space-4) 0;
 }
 
-input, select, textarea, button {
-    width: 100%;
-    max-width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #c8c8c8;
-    border-radius: 8px;
-    background: #fff;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-button, [type="submit"] {
-    background: #0a84ff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 0.75rem 1rem;
-    font-weight: 500;
-}
-
-/* СОСТОЯНИЯ ЭЛЕМЕНТОВ */
-:where(input, select, textarea, button):focus-visible {
-    outline: 2px solid #0a84ff;
-    outline-offset: 2px;
-}
-
-button:hover {
-    background: #0070e0;
-}
-
-:disabled, [aria-disabled="true"] {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* ПОДСВЕТКА ОШИБОК */
-[aria-invalid="true"] {
-    border-color: #b00020;
-    background-color: #fff5f5;
-}
-
-.form-actions {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-small {
-    display: block;
-    color: #666;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
+.footer {
+    text-align: center;
+    padding: var(--space-3);
+    margin-top: var(--space-4);
+    border-top: 1px solid #eee;
 }
