@@ -1,83 +1,185 @@
-/* БАЗОВЫЕ СТИЛИ */
-* { box-sizing: border-box; }
+/* ===== CSS ПЕРЕМЕННЫЕ (ТОКЕНЫ) ===== */
+:root {
+    /* Светлая тема (по умолчанию) */
+    --color-bg: #fff;
+    --color-text: #333;
+    --color-muted: #666;
+    --color-primary: #0066cc;
+    --color-border: #ddd;
 
-html, body {
+    /* Отступы */
+    --space-1: 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+
+    /* Шрифты */
+    --font-body: system-ui, -apple-system, sans-serif;
+}
+
+/* Темная тема */
+[data-theme="dark"] {
+    --color-bg: #1a1a1a;
+    --color-text: #fff;
+    --color-muted: #ccc;
+    --color-primary: #4d94ff;
+    --color-border: #444;
+}
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
     line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-bg);
+    padding: var(--space-2);
 }
 
-/* СТИЛИ МОДАЛЬНОГО ОКНА */
-dialog {
-    padding: 1.25rem;
-    border: none;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
+/* ===== БЛОЧНАЯ МОДЕЛЬ - ПРОСТОЙ ВАРИАНТ ===== */
+.portfolio {
+    display: grid;
+    gap: var(--space-2);
+    margin: var(--space-3) 0;
 }
 
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-/* СТИЛИ ФОРМЫ */
-label {
-    display: block;
-    margin: 0.5rem 0 0.25rem;
-    font-weight: 500;
-}
-
-input, select, textarea, button {
-    width: 100%;
-    max-width: 100%;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #c8c8c8;
+.portfolio-item {
+    border: 1px solid var(--color-border);
+    padding: var(--space-2);
     border-radius: 8px;
-    background: #fff;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
 }
 
-button, [type="submit"] {
-    background: #0a84ff;
-    color: #fff;
+.portfolio-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: var(--space-1);
+}
+
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-primary);
+    color: white;
     border: none;
+    border-radius: 20px;
     cursor: pointer;
-    padding: 0.75rem 1rem;
-    font-weight: 500;
 }
 
-/* СОСТОЯНИЯ ЭЛЕМЕНТОВ */
-:where(input, select, textarea, button):focus-visible {
-    outline: 2px solid #0a84ff;
-    outline-offset: 2px;
+/* ===== ПРОСТЫЕ СТИЛИ ДЛЯ ОСТАЛЬНОГО ===== */
+header, nav, main, footer {
+    margin-bottom: var(--space-3);
 }
 
-button:hover {
-    background: #0070e0;
-}
-
-:disabled, [aria-disabled="true"] {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* ПОДСВЕТКА ОШИБОК */
-[aria-invalid="true"] {
-    border-color: #b00020;
-    background-color: #fff5f5;
-}
-
-.form-actions {
+nav ul {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: var(--space-2);
+    list-style: none;
 }
 
-small {
-    display: block;
-    color: #666;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* ===== АККУРАТНЫЕ БЛОКИ ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-3);
+}
+
+.section {
+    margin: var(--space-5) 0;
+}
+
+.section__title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: var(--space-4);
+    color: var(--color-text);
+}
+
+/* Карточки портфолио */
+.portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+}
+
+.portfolio__item {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    transition: transform 0.2s ease;
+}
+
+.portfolio__item:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: var(--space-2);
+}
+
+.portfolio__title {
+    font-size: 1.25rem;
+    margin: 0 0 var(--space-1) 0;
+    color: var(--color-text);
+}
+
+.portfolio__description {
+    color: var(--color-muted);
+    margin: 0;
+}
+
+/* Видео блок */
+.video-section {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+    margin: var(--space-5) 0;
+}
+
+.video-container {
+    aspect-ratio: 16/9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: var(--radius);
+}
+/* Адаптивность для блока "О нас" */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .section__title[style*="text-align: left"] {
+        text-align: center !important;
+        margin-left: 0 !important;
+    }
 }

@@ -20,19 +20,90 @@
 </header>
 <main>
     <h1>Добро пожаловать на наш сайт!</h1>
+    <section class="hero">
+        <h2 class="hero__title">Создаём цифровое будущее</h2>
+        <p class="hero__text">Профессиональная разработка сайтов и приложений</p>
+    </section>
     <section id="services">
         <h2>Наши услуги</h2>
         <p>Мы предлагаем полный цикл веб-разработки.</p>
         <a href="#contacts">Связаться с нами</a>
     </section>
     <section id="portfolio">
-        <h2>Портфолио</h2>
-        <p>Наши лучшие работы.</p>
+        <h2>Наши работы</h2>
+        <div class="portfolio">
+            <div class="portfolio-item">
+                <img
+                        src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                        alt="Веб-сайт"
+                        class="portfolio-image"
+                        width="300"
+                        height="150"
+                >
+                <h3>Корпоративный сайт</h3>
+                <p>Разработка полного цикла</p>
+            </div>
+
+            <div class="portfolio-item">
+                <img
+                        src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                        alt="Магазин"
+                        class="portfolio-image"
+                        width="300"
+                        height="150"
+                >
+                <h3>Интернет-магазин</h3>
+                <p>Электронная коммерция</p>
+            </div>
+        </div>
+    </section>
+    <!-- Немного про нас с видео -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title" style="text-align: left; margin-left: 20px;">Немного про нас</h2>
+            <div class="about-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+                <!-- Видео -->
+                <div class="video-container" style="height: 300px;">
+                    <iframe
+                            class="video-iframe"
+                            src="https://rutube.ru/play/embed/f420122afb212cb1f363da866004ccbd/"
+                            title="О нашей веб-студии"
+                            allowfullscreen
+                            style="width: 100%; height: 100%; border-radius: 12px;"
+                    ></iframe>
+                </div>
+
+                <!-- Рандомное фото -->
+                <div class="about-image">
+                    <img
+                            src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Наш офис"
+                            style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px;"
+                            width="400"
+                            height="300"
+                    >
+                    <p style="text-align: center; margin-top: 10px; color: var(--color-muted);">
+                        Наш уютный офис, где рождаются идеи
+                    </p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--space-3); color: var(--color-muted);">
+            </p>
+        </div>
+    </section>
+            <p style="text-align: center; margin-top: var(--space-3); color: var(--color-muted);">
+            </p>
+        </div>
+    </section>
+    <section class="services-preview">
+        <h2 class="services-preview__title">Наши услуги</h2>
+        <p class="services-preview__text">Полный цикл разработки: от идеи до запуска</p>
+        <a href="#services" class="services-preview__cta">Смотреть все услуги</a>
     </section>
     <section id="contacts">
         <h2>Контакты</h2>
         <p>Напишите или позвоните нам.</p>
-        <!-- Кнопка открытия модалки -->
         <button id="openDialog" type="button">Написать нам</button>
         <a href="contacts.html">Подробнее</a>
     </section>
@@ -40,27 +111,20 @@
 <footer>
     <p>&copy; 2023 Моя веб-студия. Все права защищены.</p>
 </footer>
-
-<!-- Модальное окно -->
 <dialog id="contactDialog" aria-labelledby="dialogTitle">
     <h2 id="dialogTitle">Обратная связь</h2>
-
     <form id="contactForm" method="dialog" novalidate>
         <label for="name">Имя *</label>
         <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name">
-
         <label for="email">E-mail *</label>
         <input id="email" name="email" type="email" required autocomplete="email">
-
         <label for="phone">Телефон *</label>
         <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
                aria-describedby="phoneHelp" placeholder="+7 (900) 000-00-00"
                required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
         <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
-
         <label for="date">Дата обращения</label>
         <input id="date" name="date" type="date">
-
         <label for="topic">Тема *</label>
         <select id="topic" name="topic" required>
             <option value="">Выберите тему</option>
@@ -68,17 +132,33 @@
             <option value="order">Заказ</option>
             <option value="other">Другое</option>
         </select>
-
         <label for="message">Сообщение *</label>
         <textarea id="message" name="message" rows="4" required></textarea>
-
         <div class="form-actions">
             <button type="button" id="closeDialog">Закрыть</button>
             <button type="submit">Отправить</button>
         </div>
     </form>
 </dialog>
-
 <script src="main.js" defer></script>
+<button class="theme-switch" onclick="toggleTheme()">сменить тему</button>
+
+<script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
+    // Загрузка сохраненной темы при запуске
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+</script>
+
 </body>
 </html>
