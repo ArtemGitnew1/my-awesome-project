@@ -1,22 +1,14 @@
-/* ===== CSS ПЕРЕМЕННЫЕ (ТОКЕНЫ) ===== */
 :root {
-    /* Светлая тема (по умолчанию) */
     --color-bg: #fff;
     --color-text: #333;
     --color-muted: #666;
     --color-primary: #0066cc;
     --color-border: #ddd;
-
-    /* Отступы */
     --space-1: 8px;
     --space-2: 16px;
     --space-3: 24px;
-
-    /* Шрифты */
     --font-body: system-ui, -apple-system, sans-serif;
 }
-
-/* Темная тема */
 [data-theme="dark"] {
     --color-bg: #1a1a1a;
     --color-text: #fff;
@@ -24,14 +16,11 @@
     --color-primary: #4d94ff;
     --color-border: #444;
 }
-
-/* ===== БАЗОВЫЕ СТИЛИ ===== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
     font-family: var(--font-body);
     line-height: 1.5;
@@ -39,14 +28,11 @@ body {
     background: var(--color-bg);
     padding: var(--space-2);
 }
-
-/* ===== БЛОЧНАЯ МОДЕЛЬ - ПРОСТОЙ ВАРИАНТ ===== */
 .portfolio {
     display: grid;
     gap: var(--space-2);
     margin: var(--space-3) 0;
 }
-
 .portfolio-item {
     border: 1px solid var(--color-border);
     padding: var(--space-2);
@@ -60,8 +46,6 @@ body {
     border-radius: 4px;
     margin-bottom: var(--space-1);
 }
-
-/* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== */
 .theme-switch {
     position: fixed;
     top: 20px;
@@ -73,18 +57,14 @@ body {
     border-radius: 20px;
     cursor: pointer;
 }
-
-/* ===== ПРОСТЫЕ СТИЛИ ДЛЯ ОСТАЛЬНОГО ===== */
 header, nav, main, footer {
     margin-bottom: var(--space-3);
 }
-
 nav ul {
     display: flex;
     gap: var(--space-2);
     list-style: none;
 }
-
 a {
     color: var(--color-primary);
     text-decoration: none;
@@ -93,13 +73,11 @@ a {
 a:hover {
     text-decoration: underline;
 }
-/* ===== АККУРАТНЫЕ БЛОКИ ===== */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--space-3);
 }
-
 .section {
     margin: var(--space-5) 0;
 }
@@ -110,15 +88,12 @@ a:hover {
     margin-bottom: var(--space-4);
     color: var(--color-text);
 }
-
-/* Карточки портфолио */
 .portfolio {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-4);
     margin: var(--space-4) 0;
 }
-
 .portfolio__item {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
@@ -126,11 +101,9 @@ a:hover {
     padding: var(--space-3);
     transition: transform 0.2s ease;
 }
-
 .portfolio__item:hover {
     transform: translateY(-5px);
 }
-
 .portfolio__image {
     width: 100%;
     height: 200px;
@@ -138,19 +111,15 @@ a:hover {
     border-radius: var(--radius);
     margin-bottom: var(--space-2);
 }
-
 .portfolio__title {
     font-size: 1.25rem;
     margin: 0 0 var(--space-1) 0;
     color: var(--color-text);
 }
-
 .portfolio__description {
     color: var(--color-muted);
     margin: 0;
 }
-
-/* Видео блок */
 .video-section {
     background: var(--color-bg);
     border: 1px solid var(--color-border);
@@ -158,20 +127,17 @@ a:hover {
     padding: var(--space-4);
     margin: var(--space-5) 0;
 }
-
 .video-container {
     aspect-ratio: 16/9;
     max-width: 800px;
     margin: 0 auto;
 }
-
 .video-iframe {
     width: 100%;
     height: 100%;
     border: none;
     border-radius: var(--radius);
 }
-/* Адаптивность для блока "О нас" */
 @media (max-width: 768px) {
     .about-content {
         grid-template-columns: 1fr !important;
